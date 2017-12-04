@@ -1,0 +1,62 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+  font-family: "Sky Text", "Arial", Sans-Serif;
+  font-size: 18px;
+  background-color: white;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background: -moz-linear-gradient(left, midnightblue, steelblue, steelblue, midnightblue);
+}
+
+#content {
+  color: white;
+  padding: 10px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+#logo {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+}
+
+#banner {
+  text-align: center;
+  position: relative;
+  width: 100%;
+  padding: 5px;
+  padding-top: 10px;
+  background-color: white;
+  display: inline-block;
+}
+
+.slider {
+  width: 50%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.show {
+  border: white 2px solid;
+  border-radius: 25px;
+  margin: 10px;
+  margin-bottom: 5px;
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+}
+
+#upload {
+  margin-top: 5px;
+  color: #4E4E4E;
+}
+
+code {
+  background-color: transparent;
+  color: white;
+  font-size: 14px;
+}

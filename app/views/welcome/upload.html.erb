@@ -1,0 +1,31 @@
+<p>
+  Got your own selection of shows that you want us to include? Great!
+  <br/>
+  Upload them as an XML file using our file uploader:
+</p>
+<%= form_tag 'get_file', :multipart => true do %>
+    <%= file_field_tag 'file' %>
+    <%= submit_tag "Upload", :id => 'upload' %>
+<% end %>
+<br/>
+<br/>
+<p>
+  Having problems?
+  <br/>
+  Please ensure that your file is uploaded in the following XML format:
+  <br/>
+    <code>
+      &lt;?xml version="1.0" encoding="UTF-8"?&gt;<br/>
+      &lt;data&gt;<br/>
+      &lt;programme&gt;<br/>
+      &lt;name&gt;NAME OF SHOW/MOVIE (e.g. Inception)&lt;/name&gt;<br/>
+      &lt;image&gt;IMAGE FILE NAME (e.g. inception.png)&lt;/image&gt;<br/>
+      &lt;mood&gt;MOOD OF SHOW/MOVIE (e.g. Agitated, Calm, Happy, Sad, Tired, Wide Awake, Scared, Fearless)&lt;/mood&gt;<br/>
+      &lt;/programme&gt;<br>
+      ... OTHER SHOWS/MOVIES ...<br>
+      &lt;/data&gt;
+    </code>
+  <br/>
+  <br/>
+  If the problems persist, please get in touch with a member of our support team at https://contactus.sky.com/uk.
+</p>

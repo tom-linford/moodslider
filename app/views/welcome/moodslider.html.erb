@@ -1,0 +1,80 @@
+<div style="text-align: center">
+  <p>
+    Welcome to Sky's Moodslider application!
+    <br/>
+    Let us know how you'd like to feel using the sliders below, and we'll set you up with a few personalised recommendations.
+  </p>
+  <%= form_tag do %>
+      <table style="margin: 0px auto">
+        <tr>
+          <td style="text-align: right">Agitated</td>
+          <td width="500px", style="padding: 12px"><%= range_field_tag :calm, $calm, in: 1..100, :class => 'slider' %></td>
+          <td style="text-align: left">Calm</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">Happy</td>
+          <td style="padding: 12px"><%= range_field_tag :sad, $sad, in: 1..100, :class => 'slider' %></td>
+          <td style="text-align: left">Sad</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">Tired</td>
+          <td style="padding: 12px"><%= range_field_tag :awake, $awake, in: 1..100, :class => 'slider' %></td>
+          <td style="text-align: left">Wide Awake</td>
+        </tr>
+        <tr>
+          <td style="text-align: right">Scared</td>
+          <td style="padding: 12px"><%= range_field_tag :fearless, $fearless, in: 1..100, :class => 'slider' %></td>
+          <td style="text-align: left">Fearless</td>
+        </tr>
+      </table>
+  <% end %>
+  <p>
+    <% if $shows.nil? %>
+        Looks like you need to upload some shows! Head over to the 'Upload Content' page using the link at the top of this screen.
+    <% else %>
+        <% if $shows.empty? %>
+            Get started by moving one of the sliders above!
+        <% else %>
+            Based on what you've told us, we recommend these great shows:
+        <% end %>
+    <% end %>
+  </p>
+  <div style="text-align: center">
+    <% unless $shows.nil? %>
+      <% $shows.map do |show| %>
+          <div style="display: inline-block">
+            <% unless show.nil? %>
+                <%= image_tag show.path, :class => "show" %>
+                <p><%= show.name %></p>
+            <% end %>
+          </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<!-- handles the updating of slider values -->
+<script type='text/javascript'>
+    $(document).ready(function() {
+        // when any slider value changes
+        $(".slider").change(function() {
+            updateVals();
+        });
+
+        function updateVals() {
+            // retrieve all slider values
+            var calm = $("#calm").val();
+            var sad = $("#sad").val();
+            var awake = $("#awake").val();
+            var fearless = $("#fearless").val();
+
+            // send slider values to the server
+            $.ajax({
+                url : "/update",
+                type : "post",
+                data : { calm: calm, sad: sad, awake: awake, fearless: fearless },
+                dataType: 'script'
+            });
+        }
+    });
+</script>

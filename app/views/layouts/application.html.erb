@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sky Cinema | Moodslider</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div id="banner">
+      <div id="logo">
+        <%= image_tag "sky_logo.png", :alt => "sky logo", :height => 90 %>
+      </div>
+      <div>
+        <h1 style="margin: 0">Sky Cinema Moodslider</h1>
+        <p><%= link_to "Moodslider", root_path, :method => :get %> | <%= link_to "Upload Content", upload_path, :method => :get %></p>
+      </div>
+    </div>
+    <div id="content">
+      <%= yield %>
+    </div>
+  </body>
+</html>
